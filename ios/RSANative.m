@@ -376,11 +376,6 @@ typedef void (^SecKeyPerformBlock)(SecKeyRef key);
 
     if (status != errSecSuccess) {
         NSLog(@"error accessing the key: %d", status);
-        NSException *exception = [NSException
-            exceptionWithName:@"KeyChainException"
-            reason:@"*** SecItemCopyMatching failed"
-            userInfo:nil];
-        @throw exception;
     } else {
         if (performBlock) { performBlock(key); }
         if (key) { CFRelease(key); }
